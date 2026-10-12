@@ -29,3 +29,10 @@ Symlinks are the awkward one. By default `follow_symlinks=False`, which means a 
 Entries that cannot be stated (broken symlinks, files that vanish mid-walk, permission-denied entries) are silently skipped so a partial tree still produces a summary. A top-level path that does not exist raises `FileNotFoundError`; a path that is not a directory raises `NotADirectoryError`.
 
 The order of `subdir_summaries` is filesystem order from `os.scandir`, not sorted. Sort on `path` if you need deterministic ordering across platforms.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
