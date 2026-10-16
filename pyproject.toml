@@ -1,6 +1,6 @@
 [project]
 name = "directory-size-counter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Walks a tree and aggregates per-subdirectory byte counts and file counts into a nested summary."
 requires-python = ">=3.10"
 dependencies = []
